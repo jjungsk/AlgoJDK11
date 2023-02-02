@@ -1,0 +1,57 @@
+package study.ssafy.bundler;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.StringTokenizer;
+
+public class 고층건물_정세권 {
+	
+	public static void main(String[] args) throws IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st;
+		
+		int N = Integer.parseInt(br.readLine());
+		
+		int[] arr = new int[N];
+		st = new StringTokenizer(br.readLine());
+		
+		for (int i = 0; i < N; i++)
+			arr[i] = Integer.parseInt(st.nextToken());
+		
+		int cur = 0;
+		int temp = 0;
+		int cnt = 0;
+		int ans = 0;
+		for (int i = 0; i < N; i++) {
+			temp = arr[i];
+			if (temp < cur) continue;
+			
+			cur = temp;
+			for (int j = cur-1; j >= 0; j--) {
+				if (cur < arr[j]) break;
+				if (cur == arr[j]) {
+					cnt++;
+					break;
+				}
+				cnt++;
+			}
+			
+			for (int k = cur+1; k < N; k++) {
+				if (cur < arr[k]) break;
+				if (cur == arr[k]) {
+					cnt++;
+					break;
+				}
+				cnt++;
+			}
+			
+			ans = ans > cnt? ans: cnt;
+			
+		} // for문 종료
+		
+		System.out.println(ans);
+		
+	}
+
+}

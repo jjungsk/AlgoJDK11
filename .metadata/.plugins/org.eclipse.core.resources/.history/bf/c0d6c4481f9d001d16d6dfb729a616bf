@@ -1,9 +1,0 @@
-package selfStudy.solved.ac.ing;
-
-public class Main_4485_젤다 {
-	
-	public static void main(String[] args) {
-		System.out.println("hello");
-	}
-
-}

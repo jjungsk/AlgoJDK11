@@ -1,0 +1,62 @@
+package study.ssafy.bundler;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+import java.util.StringTokenizer;
+
+public class 고층건물_정세권 {
+	
+	public static <T> void main(String[] args) throws IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st;
+		
+		int N = Integer.parseInt(br.readLine());
+		
+		int[] arr = new int[N];
+		st = new StringTokenizer(br.readLine());
+		
+		for (int i = 0; i < N; i++)
+			arr[i] = Integer.parseInt(st.nextToken());
+		
+		List<Integer> ans = new ArrayList<>();
+		
+		double linear = 0.0d;
+		double temp = 0.0d;
+		
+		for (int i = 0; i < N-1; i++) {
+			ans.add(i, ans.get(i)+1);
+			ans.add(i+1, ans.get(i+1)+1);
+			
+			temp = (double)(arr[i+1]-arr[i]);
+			for (int j = i+2; j < N; j++) {
+				linear = (double)(arr[j]-arr[i]) / (double)(j-i);
+				if (linear > temp) {
+					temp = linear;
+					ans.add(i, ans.get(i)+1);
+					ans.add(j, ans.get(j)+1);
+				}
+			}
+			
+			
+		} // for문 종료
+		
+		System.out.println(ans);
+		
+		Collections.sort(ans, new Comparator<Integer>() {
+
+			@Override
+			public int compare(Integer o1, Integer o2) {
+				// TODO Auto-generated method stub
+				return o2-o1;
+			}
+		});
+		
+		
+	}
+
+}

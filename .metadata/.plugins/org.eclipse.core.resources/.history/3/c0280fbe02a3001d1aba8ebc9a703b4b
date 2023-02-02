@@ -1,0 +1,39 @@
+package study.ssafy.bundler;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.StringTokenizer;
+
+public class 고층건물_정세권 {
+	
+	public static void main(String[] args) throws IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st;
+		
+		int N = Integer.parseInt(br.readLine());
+		
+		int[] arr = new int[N];
+		st = new StringTokenizer(br.readLine());
+		
+		for (int i = 0; i < N; i++)
+			arr[i] = Integer.parseInt(st.nextToken());
+		
+		int[] ans = new int[N];
+		
+		int cur = 0;
+		double linearL = 0.0d;
+		double linearR = 0.0d;
+		double temp = 0.0d;
+		int cnt = 0;
+		
+		for (int i = 0; i < N; i++) {
+			
+			
+		} // for문 종료
+		
+		System.out.println(ans);
+		
+	}
+
+}

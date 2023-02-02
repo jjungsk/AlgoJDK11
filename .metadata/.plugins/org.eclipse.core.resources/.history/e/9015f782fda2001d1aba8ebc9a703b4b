@@ -1,0 +1,65 @@
+package study.ssafy.bundler;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.StringTokenizer;
+
+public class 고층건물_정세권 {
+	
+	public static void main(String[] args) throws IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st;
+		
+		int N = Integer.parseInt(br.readLine());
+		
+		int[] arr = new int[N];
+		st = new StringTokenizer(br.readLine());
+		
+		for (int i = 0; i < N; i++)
+			arr[i] = Integer.parseInt(st.nextToken());
+		
+		int cur = 0;
+		int cnt = 0;
+		int ans = 0;
+		int tempMin = -1;
+		for (int i = 0; i < N; i++) {
+			if (arr[i] < cur) continue;
+			cur = arr[i];
+			
+			tempMin = -1;
+			for (int j = i-1; j >= 0; j--) {
+				if (cur <= arr[j]) {
+					cnt++;
+					break;
+				}
+				if (tempMin < arr[j]) {
+					tempMin = arr[j];
+					cnt++;
+				}
+				
+			}
+			
+			tempMin = -1;
+			for (int k = i+1; k < N; k++) {
+				if (cur <= arr[k]) {
+					cnt++;
+					break;
+				}
+				if (tempMin < arr[k]) {
+					tempMin = arr[k];
+					cnt++;
+				}
+			}
+			
+			ans = ans > cnt? ans: cnt;
+			cnt = 0;
+			System.out.println(i+1 + "번째 : " + ans);
+			
+		} // for문 종료
+		
+		System.out.println(ans);
+		
+	}
+
+}
